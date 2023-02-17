@@ -1,0 +1,14 @@
+---
+import logo from "../assets/images/logo.svg";
+export interface Props {
+  align: string;
+}
+const { align } = Astro.props as Props;
+---
+
+<div class="h-500 bg-gradient-to-r from-violet-500 to-fuchsia-500">
+  <img src={logo} class={align} />
+  <h3 class={align}>McMaster University</h3>
+  <h1>Computer Science Society</h1>
+  <h3>Connecting the science with the students through computers</h3>
+</div>

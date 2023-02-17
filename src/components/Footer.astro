@@ -1,0 +1,11 @@
+---
+import imge from "../assets/team/arian.jpg";
+export interface Props {
+  align: string;
+}
+const { align } = Astro.props as Props;
+---
+
+<div class="h-14 bg-gradient-to-r from-violet-500 to-fuchsia-500">
+  <img src={imge} class={align} />
+</div>
