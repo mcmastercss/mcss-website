@@ -21,10 +21,9 @@ export type FormattedElement = {
   children: FormattedText[];
 }
 
-
 declare module 'slate' {
   interface CustomTypes {
-    Element: FormattedElement[];
-    Text: FormattedText[];
+    Element: FormattedElement;
+    Text: FormattedText;
   }
 }
