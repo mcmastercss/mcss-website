@@ -1,0 +1,21 @@
+---
+import { getPosts } from "../../api";
+import NewsCard from "../../components/NewsCard.astro";
+import Layout from "../../layouts/Layout.astro";
+
+// TODO style it
+const data = await getPosts();
+const posts = data.docs;
+---
+
+<Layout title={"Posts"}>
+  {
+    posts.map((post) => (
+      <NewsCard
+        href={`/posts/${post.slug}`}
+        title={post.title || "Untitled"}
+        body={post.description || "No description"}
+      />
+    ))
+  }
+</Layout>

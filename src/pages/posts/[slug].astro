@@ -1,0 +1,37 @@
+---
+import RichText from "../../components/RichText.astro";
+import Layout from "../../layouts/Layout.astro";
+
+import { getPosts } from "../../api";
+import type { Post } from "../../payload-types";
+import type {
+  FormattedElement,
+  FormattedText,
+} from "../../rich-text-export";
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  const paths = posts.docs.map((post) => {
+    return {
+      params: { slug: post.slug },
+      props: { post },
+    };
+  });
+  return paths;
+}
+
+export interface Props {
+  post: Post;
+  params: string | undefined;
+}
+
+const { post } = Astro.props;
+const content = post.content as (FormattedElement | FormattedText)[];
+---
+
+<Layout title={post.title || ""}>
+  <main>
+    <h1>{post.title}</h1>
+    {post.content && <RichText richText={content} />}
+  </main>
+</Layout>

@@ -19,7 +19,7 @@ import type {
 } from "./rich-text-export";
 declare module "slate" {
   interface CustomTypes {
-    Element: FormattedElement[];
-    Text: FormattedText[];
+    Element: FormattedElement;
+    Text: FormattedText;
   }
 }
