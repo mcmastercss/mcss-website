@@ -27,6 +27,7 @@ export interface Props {
 
 const { post } = Astro.props;
 const content = post.content as (FormattedElement | FormattedText)[];
+console.log(content)
 ---
 
 <Layout title={post.title || ""}>
