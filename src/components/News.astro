@@ -1,0 +1,18 @@
+---
+import NewsCard from "../components/NewsCard.astro";
+
+// demo data
+const articleTitle = "New CAS Guidelines";
+const articleBody = `Sunt incididunt voluptate in consequat id. Sit fugiat fugiat sint anim nulla 
+voluptate elit ad ullamco. Labore sit do culpa. Sunt aliquip excepteur laboris occaecat occaecat 
+eu ut aasdf sadfk asdf dolor ita dame dame da...`;
+---
+
+<div class="flex flex-col mx-24 mt-5 mb-2">
+    <h1 class="text-3xl font-bold text-blue-600 mb-5">News</h1>
+    <div class="flex space-x-8">
+        <NewsCard title={articleTitle} body={articleBody} href="#" />
+        <NewsCard title={articleTitle} body={articleBody} href="#" />
+        <NewsCard title={articleTitle} body={articleBody} href="#" />
+    </div>
+</div>

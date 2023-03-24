@@ -1,0 +1,24 @@
+---
+import defaultImage from "../assets/images/default.jpg";
+
+export interface Props {
+    title: string;
+    body: string;
+    href: string;
+}
+// TODO needs styling
+const { href, title, body } = Astro.props;
+---
+
+<div
+    class="w-[21rem] flex flex-col bg-[#5783FB] text-slate-50 px-6 py-8 rounded-md shadow-md"
+>
+	<img src={defaultImage} alt="" class="mb-3 rounded-md">
+    <h2 class="text-2xl font-bold">
+        {title}
+    </h2>
+    <p class="py-4 text-sm">
+        {body}
+    </p>
+    <a href={href} class="font-bold text-lg w-fit hover:text-neutral-200">Read More</a>
+</div>
