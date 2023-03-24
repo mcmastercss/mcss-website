@@ -24,12 +24,18 @@ function apiFetch(url: string, options: any = {}) {
   });
 }
 
+export async function getPost(
+  slug: string,
+): Promise<PayloadCollection<Post>> {
+  const data = await apiFetch(`${import.meta.env.PAYLOAD_URL}/api/posts/${slug}`);
+  return data;
+}
+
+// fetches all posts if no query is passed (not good when there are many)
+// TODO make a function that limits the number of posts fetched
 export async function getPosts(
   query: any = null
 ): Promise<PayloadCollection<Post>> {
   const stringifiedQuery = qs.stringify(query, { addQueryPrefix: true });
-  const data = await apiFetch(
-    `${import.meta.env.PAYLOAD_URL}/api/posts${stringifiedQuery}`
-  );
-  return data;
+  return getPost(stringifiedQuery);
 }
