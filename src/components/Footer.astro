@@ -1,11 +1,24 @@
 ---
-import imge from "../assets/team/arian.jpg";
+import fg from 'fast-glob';
+import arian from "../assets/team/arian.jpg";
+const collections: string[] = fg.sync('../assets/team/*', { onlyDirectories: true });
+
 export interface Props {
   align: string;
 }
-const { align } = Astro.props as Props;
+const {align} = Astro.props as Props;
 ---
 
-<div class="h-14 bg-gradient-to-r from-violet-500 to-fuchsia-500">
-  <img src={imge} class={align} />
+<div>
+  <img src={arian} class="w-20 h-20 rounded-full mx-auto border-4 border-[#5884FB]" />
+  <hr class="mx-auto h-1 w-[95%] bg-[#5884FB] border-1">  
+  <div class="flex flex-col items-left mx-9">
+    <h3 class="text-1xl mb-1">McMaster University</h3>
+    <h1 class="text-2xl font-bold">Computer Science</h1>
+    <h1 class="text-2xl font-bold mb-3">Society</h1>
+    </div>
+    <div class="flex flex-col items-right mx-9">
+      <!-- Copyright with right align -->
+      <h1 class="text-1xl font-bold mb-2">Copyright &#169; 2023</h1>
+    </div>
 </div>
