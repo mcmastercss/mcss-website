@@ -1,0 +1,27 @@
+---
+import fg from "fast-glob";
+const collections: string[] = fg.sync("src/assets/team/*");
+export function capitalizeFirstLetter(string: string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+---
+
+<div class="flex flex-row my-10">
+  {
+    collections.map((image) => (
+      <>
+        <img
+          src={image}
+          class="mx-auto flex h-16 w-16 rounded-full border-4 border-[#5884FB]"
+        />
+        <h1>
+          {
+            false &&
+            capitalizeFirstLetter(
+              image.replace("src/assets/team/", "").replace(".jpg", "")
+            )}
+        </h1>
+      </>
+    ))
+  }
+</div>
