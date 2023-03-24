@@ -1,34 +1,36 @@
 ---
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-export interface Props{
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import About from "../components/About.astro";
+export interface Props {
     title: string;
-	aligns: string;
+    aligns: string;
 }
-const {title, aligns} = Astro.props as Props;
+const { title } = Astro.props as Props;
 ---
 
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<Header align={aligns}/>
-		<div class="px-8 lg:px-0">
-			<slot />
-		</div>
-		<Footer align={aligns}/>
-	</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{title}</title>
+    </head>
+    <body class="">
+        <Header />
+        <About />
+        <div class="px-8 lg:px-0">
+            <slot />
+        </div>
+        <Footer />
+    </body>
 </html>
 
 <style>
-	@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;300;400;500;600;700;800;900&display=swap');
-	body{
-		font-family: 'Noto Sans', sans-serif;
-	}
+    @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;300;400;500;600;700;800;900&display=swap");
+    body {
+        font-family: "Noto Sans", sans-serif;
+    }
 </style>

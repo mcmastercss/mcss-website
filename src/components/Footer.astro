@@ -2,10 +2,6 @@
 import fg from "fast-glob";
 const collections: string[] = fg.sync("src/assets/team/*");
 
-export interface Props {
-  align: string;
-}
-const { align } = Astro.props as Props;
 // let hover = false;
 // function capitalizeFirstLetter(string) {
 //   return string.charAt(0).toUpperCase() + string.slice(1);
