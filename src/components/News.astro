@@ -8,11 +8,34 @@ voluptate elit ad ullamco. Labore sit do culpa. Sunt aliquip excepteur laboris o
 eu ut aasdf sadfk asdf dolor ita dame dame da...`;
 ---
 
-<div class="flex flex-col mx-24 mt-5 mb-2">
-    <h1 class="text-3xl font-bold text-blue-600 mb-5">News</h1>
-    <div class="flex space-x-8">
+<div class="flex flex-col ml-24 mr-1 mt-12 mb-2">
+    <h1 class="text-3xl font-bold text-blue-700 mb-5">News</h1>
+    <div
+        class="grid grid-flow-col overscroll-contain overflow-x-auto scroll-smooth snap-x space-x-8"
+    >
+        <NewsCard title={articleTitle} body={articleBody} href="#" />
+        <NewsCard title={articleTitle} body={articleBody} href="#" />
+        <NewsCard title={articleTitle} body={articleBody} href="#" />
+        <NewsCard title={articleTitle} body={articleBody} href="#" />
+        <NewsCard title={articleTitle} body={articleBody} href="#" />
+        <NewsCard title={articleTitle} body={articleBody} href="#" />
+        <NewsCard title={articleTitle} body={articleBody} href="#" />
+        <NewsCard title={articleTitle} body={articleBody} href="#" />
         <NewsCard title={articleTitle} body={articleBody} href="#" />
         <NewsCard title={articleTitle} body={articleBody} href="#" />
         <NewsCard title={articleTitle} body={articleBody} href="#" />
     </div>
 </div>
+
+<style>
+    /* Hide the verticle scroll bar */
+    /* Chrome */
+    *::-webkit-scrollbar {
+        width: 10px;
+    }
+    /*Firefox and Edge*/
+    * {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+</style>

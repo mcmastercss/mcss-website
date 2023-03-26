@@ -1,12 +1,12 @@
 ---
 import fg from "fast-glob";
 const collections: string[] = fg.sync("src/assets/team/*");
-export function capitalizeFirstLetter(string: string) {
+function capitalizeFirstLetter(string: string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 ---
 
-<div class="flex flex-row my-10">
+<div class="flex flex-row mt-16 m-10">
   {
     collections.map((image) => (
       <>
