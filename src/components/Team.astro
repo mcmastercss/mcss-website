@@ -6,13 +6,13 @@ function capitalizeFirstLetter(string: string) {
 }
 ---
 
-<div class="flex flex-row mt-16 m-10">
+<div class="flex flex-row my-10 overflow-x-auto scroll-smooth">
   {
     collections.map((image) => (
       <>
         <img
           src={image}
-          class="mx-auto flex h-16 w-16 rounded-full border-4 border-[#5884FB]"
+          class="flex mr-7 h-20 w-h-20 rounded-full border-4 hover:border-[#5884FB]"
         />
         <h1>
           {
@@ -25,3 +25,17 @@ function capitalizeFirstLetter(string: string) {
     ))
   }
 </div>
+
+
+<style>
+  /* Hide the verticle scroll bar */
+  /* Chrome */
+  *::-webkit-scrollbar {
+      width: 10px;
+  }
+  /*Firefox and Edge*/
+  * {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+  }
+</style>
