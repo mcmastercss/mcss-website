@@ -11,7 +11,8 @@ export interface Config {
     posts: Post;
     tags: Tag;
     users: User;
-    media: Media;
+    pfps: Pfp;
+    thumbnails: Thumbnail;
   };
   globals: {};
 }
@@ -21,6 +22,7 @@ export interface Category {
 }
 export interface Post {
   id: string;
+  thumbnail: string | Thumbnail;
   title: string;
   summary: string;
   slug?: string;
@@ -31,15 +33,36 @@ export interface Post {
   content?: {
     [k: string]: unknown;
   }[];
-  status?: "draft" | "published";
-  thumbnail: string | Media;
+  status?: 'draft' | 'published';
+  createdAt: string;
+  updatedAt: string;
+}
+export interface Thumbnail {
+  id: string;
+  slug?: string;
+  url?: string;
+  filename?: string;
+  mimeType?: string;
+  filesize?: number;
+  width?: number;
+  height?: number;
+  sizes: {
+    thumbnail: {
+      url?: string;
+      width?: number;
+      height?: number;
+      mimeType?: string;
+      filesize?: number;
+      filename?: string;
+    };
+  };
   createdAt: string;
   updatedAt: string;
 }
 export interface User {
   id: string;
+  pfp: string | Pfp;
   name: string;
-  pfp: string | Media;
   email?: string;
   resetPasswordToken?: string;
   resetPasswordExpiration?: string;
@@ -49,7 +72,7 @@ export interface User {
   updatedAt: string;
   password?: string;
 }
-export interface Media {
+export interface Pfp {
   id: string;
   slug?: string;
   url?: string;
@@ -58,24 +81,16 @@ export interface Media {
   filesize?: number;
   width?: number;
   height?: number;
-  // sizes: {
-  //   thumbnail: {
-  //     url?: string;
-  //     width?: number;
-  //     height?: number;
-  //     mimeType?: string;
-  //     filesize?: number;
-  //     filename?: string;
-  //   };
-  //   pfp: {
-  //     url?: string;
-  //     width?: number;
-  //     height?: number;
-  //     mimeType?: string;
-  //     filesize?: number;
-  //     filename?: string;
-  //   };
-  // };
+  sizes: {
+    pfp: {
+      url?: string;
+      width?: number;
+      height?: number;
+      mimeType?: string;
+      filesize?: number;
+      filename?: string;
+    };
+  };
   createdAt: string;
   updatedAt: string;
 }
