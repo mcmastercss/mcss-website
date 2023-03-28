@@ -1,14 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
-  theme: {
-    extend: {},
-  },
-  plugins: [
-    require("tailwind-scrollbar")({ nocompatible: true }),
-    require("daisyui"),
-  ],
-  daisyui: {
-    themes: false,
-  },
+    content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
+    theme: {
+        extend: {},
+    },
+    plugins: [require("tailwind-scrollbar")({ nocompatible: true }), require("daisyui")],
+    daisyui: {
+        darkTheme: false
+    }
 };
