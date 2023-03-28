@@ -5,42 +5,41 @@
  * and re-run `payload generate:types` to regenerate this file.
  */
 
-export interface Config {}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "categories".
- */
+export interface Config {
+  collections: {
+    categories: Category;
+    posts: Post;
+    tags: Tag;
+    users: User;
+    media: Media;
+  };
+  globals: {};
+}
 export interface Category {
   id: string;
-  name?: string;
+  name: string;
 }
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "posts".
- */
 export interface Post {
   id: string;
-  title?: string;
-  description?: string;
+  title: string;
+  summary: string;
   slug?: string;
-  author?: string | User;
-  publishedDate?: string;
-  category?: string | Category;
+  author: string | User;
+  publishedDate: string;
+  category: string | Category;
   tags?: string[] | Tag[];
   content?: {
     [k: string]: unknown;
   }[];
-  status?: 'draft' | 'published';
+  status?: "draft" | "published";
+  thumbnail: string | Media;
   createdAt: string;
   updatedAt: string;
 }
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "users".
- */
 export interface User {
   id: string;
-  name?: string;
+  name: string;
+  pfp: string | Media;
   email?: string;
   resetPasswordToken?: string;
   resetPasswordExpiration?: string;
@@ -48,12 +47,39 @@ export interface User {
   lockUntil?: string;
   createdAt: string;
   updatedAt: string;
+  password?: string;
 }
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "tags".
- */
+export interface Media {
+  id: string;
+  slug?: string;
+  url?: string;
+  filename?: string;
+  mimeType?: string;
+  filesize?: number;
+  width?: number;
+  height?: number;
+  // sizes: {
+  //   thumbnail: {
+  //     url?: string;
+  //     width?: number;
+  //     height?: number;
+  //     mimeType?: string;
+  //     filesize?: number;
+  //     filename?: string;
+  //   };
+  //   pfp: {
+  //     url?: string;
+  //     width?: number;
+  //     height?: number;
+  //     mimeType?: string;
+  //     filesize?: number;
+  //     filename?: string;
+  //   };
+  // };
+  createdAt: string;
+  updatedAt: string;
+}
 export interface Tag {
   id: string;
-  name?: string;
+  name: string;
 }

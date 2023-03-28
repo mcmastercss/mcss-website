@@ -4,10 +4,7 @@ import Layout from "../../layouts/Layout.astro";
 
 import { getPosts } from "../../api";
 import type { Post } from "../../payload-types";
-import type {
-  FormattedElement,
-  FormattedText,
-} from "../../rich-text-export";
+import type { FormattedElement, FormattedText } from "../../rich-text-export";
 
 export async function getStaticPaths() {
   const posts = await getPosts();
@@ -27,12 +24,13 @@ export interface Props {
 
 const { post } = Astro.props;
 const content = post.content as (FormattedElement | FormattedText)[];
-console.log(content)
+console.log(post);
 ---
 
 <Layout title={post.title || ""}>
   <main class="p-6 max-w-3xl m-auto">
     <h1 class="text-5xl font-extrabold pb-6">{post.title}</h1>
+    <img src={post.thumbnail.url} alt="" srcset="" />
     {post.content && <RichText richText={content} />}
   </main>
 </Layout>
