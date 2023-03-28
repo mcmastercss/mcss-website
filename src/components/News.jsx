@@ -9,7 +9,7 @@ const NewsSection = () => {
 
     return (
         <div className="flex flex-col p-4 lg:p-12">
-            <h1 className="mb-5 text-3xl font-bold text-blue-700">News</h1>
+            <h2 className="mb-5 text-3xl font-bold text-blue-700">News</h2>
             <div className="grid grid-flow-col space-x-8 overflow-x-auto snap-x scroll-smooth scrollbar-thin scrollbar-thumb-blue-900 scrollbar-thumb-rounded-3xl">
                 {[...Array(8)].map((value, index) => {
                     return (
