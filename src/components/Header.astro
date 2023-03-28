@@ -7,18 +7,26 @@ import linkedin from "../assets/images/linkedin.svg";
 import UpcomingEvent from "./UpcomingEvent.astro";
 ---
 
-<div class="flex flex-row bg-gradient-to-t from-[#2356DD] to-[#5884FB]">
-  <div class="flex flex-1 flex-col justify-end h-[64vh] text-white px-24 pb-16">
-    <img src={logo_white} class="w-60 translate-y-8 -translate-x-5 h-w-52" />
-    <h3 class="text-2xl mb-1 font-light">McMaster University</h3>
+<!-- bg-gradient-to-t from-[#2356DD] to-[#5884FB] -->
+<div
+  class="flex flex-col lg:flex-row lg:bg-gradient-to-t from-[#2356DD] to-[#5884FB] justify-between lg:items-end lg:px-12"
+>
+  <div
+    class="flex flex-col justify-end h-[64vh] text-white px-8 lg:pb-16 bg-gradient-to-t from-[#2356DD] to-[#5884FB] lg:bg-none"
+  >
+    <img src={logo_white} class="w-28 lg:w-52 pb-12 pt-16 lg:py-8 lg:px-0" />
+    <h3 class="text-base lg:text-lg font-light">McMaster University</h3>
 
-    <h1 class="text-3xl font-extrabold">Computer Science</h1>
-    <h1 class="text-3xl font-extrabold mb-3">Society</h1>
+    <h1 class="text-2xl lg:text-4xl font-extrabold">
+      Computer Science<br />Society
+    </h1>
 
-    <h3 class="text-2xl font-light">Connecting the science with the</h3>
-    <h3 class="text-2xl font-light">students through computers</h3>
+    <h3 class="text-base lg:text-lg font-light">
+      Connecting the science with the
+    </h3>
+    <h3 class="text-base lg:text-lg font-light">students through computers</h3>
 
-    <div class="flex gap-6 py-4 items-center">
+    <div class="flex gap-3 lg:gap-6 pt-4 items-center lg:pb-4 pb-12">
       <a href="https://www.instagram.com/mcmastercss/"
         ><img src={instagram} class="h-8" /></a
       >
@@ -29,5 +37,7 @@ import UpcomingEvent from "./UpcomingEvent.astro";
       <a href="mailto:mcss@mcmaster.ca'"><img src={email} class="h-8" /></a>
     </div>
   </div>
-  <UpcomingEvent />
+  <div class="p-4 lg:w-[26em] xl:w-[32em] lg:p-0 lg:-mb-20">
+    <UpcomingEvent />
+  </div>
 </div>
