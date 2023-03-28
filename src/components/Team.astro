@@ -6,17 +6,19 @@ function capitalizeFirstLetter(string: string) {
 }
 ---
 
+<h3 class="text-2xl font-semibold text-center text-blue-600">
+  run with ❤️ for students by students
+</h3>
 <div class="flex flex-row my-10 overflow-x-auto scroll-smooth">
   {
     collections.map((image) => (
       <>
         <img
           src={image}
-          class="flex mr-7 h-20 w-h-20 rounded-full border-4 hover:border-[#5884FB]"
+          class="w-h-20 mr-7 flex h-20 rounded-full border-4 hover:border-[#5884FB]"
         />
         <h1>
-          {
-            false &&
+          {false &&
             capitalizeFirstLetter(
               image.replace("src/assets/team/", "").replace(".jpg", "")
             )}
@@ -26,16 +28,15 @@ function capitalizeFirstLetter(string: string) {
   }
 </div>
 
-
 <style>
   /* Hide the verticle scroll bar */
   /* Chrome */
   *::-webkit-scrollbar {
-      width: 10px;
+    width: 10px;
   }
   /*Firefox and Edge*/
   * {
-      scrollbar-width: none;
-      -ms-overflow-style: none;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
   }
 </style>
