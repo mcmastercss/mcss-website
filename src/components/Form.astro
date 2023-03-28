@@ -1,0 +1,34 @@
+<form name="contact-us-form" netlify>
+  <div class="flex flex-col gap-5 p-10 bg-white rounded-2xl">
+    <div class="flex flex-col md:flex-row gap-5">
+      <input
+        class="input input-bordered border-2 w-full"
+        type="text"
+        name="firstname"
+        placeholder="First Name"
+      />
+      <input
+        class="input input-bordered border-2 w-full"
+        type="text"
+        name="lastname"
+        placeholder="Last Name"
+      />
+    </div>
+
+    <input
+      class="input input-bordered w-full border-2"
+      type="email"
+      name="email"
+      placeholder="Email Address"
+    />
+    <textarea
+      class="input input-bordered w-full border-2 max-h-lg h-32 p-3"
+      name="message"
+      placeholder="What's your message for us?"></textarea>
+    <div class="flex justify-center">
+      <button class="btn btn-primary w-1/2 bg-blue-700" type="submit"
+        >Send</button
+      >
+    </div>
+  </div>
+</form>
