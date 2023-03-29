@@ -23,6 +23,14 @@ const collections = docs.docs;
   <div
     class="absolute flex flex-row pt-10 animate-marquee4 lg:animate-marquee2 whitespace-nowrap"
   >
+    {
+      collections.map((image) => (
+        <img
+          src={image?.url ?? ""}
+          class="w-h-20 lg:mx-4.5 mx-2 h-16 rounded-full border-4 hover:border-[#5884FB] md:h-20"
+        />
+      ))
+    }
   </div>
 </div>
 
