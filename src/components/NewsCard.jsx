@@ -7,7 +7,7 @@ const NewsCard = ({ title, body, href }) => {
     <div
       className="w-[25rem] flex flex-col bg-[#275AE0] text-slate-50 px-6 py-8 rounded-md shadow-lg snap-start mb-5"
     >
-      <img src={defaultImage} alt="" className="object-cover mb-3 rounded-md aspect-video" />
+      <img src={defaultImage.src} alt="" className="object-cover mb-3 rounded-md aspect-video" />
       <h3 className="text-2xl font-bold">
         {title}
       </h3>
