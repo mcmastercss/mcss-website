@@ -14,7 +14,10 @@ import UpcomingEvent from "./UpcomingEvent.astro";
   <div
     class="flex flex-col justify-end text-white px-8 lg:pb-16 bg-gradient-to-t from-[#2356DD] to-[#5884FB] lg:bg-none"
   >
-    <img src={logo_white} class="pt-16 pb-12 w-28 lg:w-44 lg:pt-36 lg:px-0" />
+    <img
+      src={logo_white.src}
+      class="pt-16 pb-12 w-28 lg:w-44 lg:pt-36 lg:px-0"
+    />
     <h3 class="text-base font-light lg:text-lg">McMaster University</h3>
 
     <h1 class="text-2xl font-extrabold lg:text-4xl">
@@ -28,13 +31,15 @@ import UpcomingEvent from "./UpcomingEvent.astro";
 
     <div class="flex items-center gap-3 pt-4 pb-12 lg:gap-6 lg:pb-4">
       <a href="https://www.instagram.com/mcmastercss/"
-        ><img src={instagram} class="h-8" /></a
+        ><img src={instagram.src} class="h-8" /></a
       >
-      <a href="https://discord.gg/YKPN7wX"><img src={discord} class="h-8" /></a>
+      <a href="https://discord.gg/YKPN7wX"
+        ><img src={discord.src} class="h-8" /></a
+      >
       <a href="https://www.linkedin.com/company/mcmastercs"
-        ><img src={linkedin} class="h-7" /></a
+        ><img src={linkedin.src} class="h-7" /></a
       >
-      <a href="mailto:mcss@mcmaster.ca'"><img src={email} class="h-8" /></a>
+      <a href="mailto:mcss@mcmaster.ca'"><img src={email.src} class="h-8" /></a>
     </div>
   </div>
   <div class="p-4 lg:w-[26em] xl:w-[32em] lg:p-0 lg:-mb-20">

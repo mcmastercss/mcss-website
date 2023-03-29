@@ -17,14 +17,18 @@
     "@astrojs/tailwind": "^3.0.1",
     "@types/react": "^18.0.30",
     "@types/react-dom": "^18.0.11",
-    "astro": "^2.0.13",
+    "astro": "^2.1.5",
     "daisyui": "^2.51.5",
+    "payload": "^1.6.24",
+    "qs": "^6.11.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "styled-components": "^5.3.6",
+    "slate": "^0.91.4",
+    "styled-components": "^5.3.3",
     "tailwindcss": "^3.2.4"
   },
   "devDependencies": {
+    "@types/qs": "^6.9.7",
     "prettier": "^2.8.2",
     "prettier-plugin-tailwindcss": "^0.1.13",
     "tailwind-scrollbar": "^3.0.0"

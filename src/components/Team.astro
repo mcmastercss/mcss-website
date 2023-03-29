@@ -1,6 +1,7 @@
 ---
-import fg from "fast-glob";
-const collections: string[] = fg.sync("src/assets/team/*");
+import { getPfps } from "../api";
+const docs = await getPfps({ limit: 100, sort: "slug" });
+const collections = docs.docs;
 ---
 
 <!-- <h3 class="text-2xl font-semibold text-center text-blue-600">
@@ -13,8 +14,8 @@ const collections: string[] = fg.sync("src/assets/team/*");
     {
       collections.map((image) => (
         <img
-          src={image}
-          class="w-h-20 h-16 rounded-full border-4 mx-2 lg:mx-4.5 hover:border-[#5884FB] md:h-20"
+          src={image?.url ?? ""}
+          class="w-h-20 lg:mx-4.5 mx-2 h-16 rounded-full border-4 hover:border-[#5884FB] md:h-20"
         />
       ))
     }
@@ -22,14 +23,6 @@ const collections: string[] = fg.sync("src/assets/team/*");
   <div
     class="absolute flex flex-row pt-10 animate-marquee4 lg:animate-marquee2 whitespace-nowrap"
   >
-    {
-      collections.map((image) => (
-        <img
-          src={image}
-          class="w-h-20 h-16 rounded-full border-4 mx-2 lg:mx-4.5 hover:border-[#5884FB] md:h-20"
-        />
-      ))
-    }
   </div>
 </div>
 
