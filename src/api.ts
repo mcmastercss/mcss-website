@@ -24,10 +24,10 @@ function apiFetch(url: string, options: any = {}) {
   });
 }
 
-export async function getPost(
-  slug: string,
-): Promise<PayloadCollection<Post>> {
-  const data = await apiFetch(`${import.meta.env.PAYLOAD_URL}/api/posts/${slug}`);
+export async function getPost(slug: string): Promise<PayloadCollection<Post>> {
+  const data = await apiFetch(
+    `${import.meta.env.PAYLOAD_URL}/api/posts/${slug}`
+  );
   return data;
 }
 
@@ -38,4 +38,15 @@ export async function getPosts(
 ): Promise<PayloadCollection<Post>> {
   const stringifiedQuery = qs.stringify(query, { addQueryPrefix: true });
   return getPost(stringifiedQuery);
+}
+
+// fetches profile pictures from every user
+export async function getPfps(
+  query: any = null
+): Promise<PayloadCollection<Post>> {
+  const stringifiedQuery = qs.stringify(query, { addQueryPrefix: true });
+  const data = await apiFetch(
+    `${import.meta.env.PAYLOAD_URL}/api/pfps/${stringifiedQuery}`
+  );
+  return data;
 }
