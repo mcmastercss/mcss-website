@@ -37,11 +37,14 @@ const imageOrDefault = (obj: string | Post | User, placeholder: string) => {
     // Get thumbnail
   } else if ("thumbnail" in obj) {
     const thumbnail = obj.thumbnail as Thumbnail;
-    return "url" in thumbnail ? thumbnail.url : placeholder;
+    return thumbnail?.url ?? placeholder;
+    // get pfp
   } else if ("pfp" in obj) {
     const pfp = obj.pfp as Pfp;
-    return "url" in pfp ? pfp.url : placeholder;
+    return pfp?.url ?? placeholder;
   }
+
+  // default to placeholder
   return placeholder;
 };
 
