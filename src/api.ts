@@ -24,29 +24,27 @@ function apiFetch(url: string, options: any = {}) {
   });
 }
 
-export async function getPost(slug: string): Promise<PayloadCollection<Post>> {
+async function getTable<T>(
+  table: string,
+  query: any = null
+): Promise<PayloadCollection<T>> {
+  const stringifiedQuery = qs.stringify(query, { addQueryPrefix: true });
   const data = await apiFetch(
-    `${import.meta.env.PAYLOAD_URL}/api/posts${slug}`
+    `${import.meta.env.PAYLOAD_URL}/api/${table}${stringifiedQuery}`
   );
   return data;
 }
 
 // fetches all posts if no query is passed (not good when there are many)
-// TODO make a function that limits the number of posts fetched
 export async function getPosts(
   query: any = null
 ): Promise<PayloadCollection<Post>> {
-  const stringifiedQuery = qs.stringify(query, { addQueryPrefix: true });
-  return getPost(stringifiedQuery);
+  return getTable<Post>("posts", query);
 }
 
 // fetches profile pictures from every user
 export async function getPfps(
   query: any = null
 ): Promise<PayloadCollection<Pfp>> {
-  const stringifiedQuery = qs.stringify(query, { addQueryPrefix: true });
-  const data = await apiFetch(
-    `${import.meta.env.PAYLOAD_URL}/api/pfps${stringifiedQuery}`,
-  );
-  return data;
+  return getTable<Pfp>("pfps", query);
 }

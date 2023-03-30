@@ -22,7 +22,7 @@ export interface Category {
 }
 export interface Post {
   id: string;
-  thumbnail: string | Thumbnail;
+  thumbnail?: string | Thumbnail;
   title: string;
   summary: string;
   slug?: string;
@@ -33,7 +33,7 @@ export interface Post {
   content?: {
     [k: string]: unknown;
   }[];
-  status?: 'draft' | 'published';
+  status?: "draft" | "published";
   createdAt: string;
   updatedAt: string;
 }
@@ -61,7 +61,7 @@ export interface Thumbnail {
 }
 export interface User {
   id: string;
-  pfp: string | Pfp;
+  pfp?: string | Pfp;
   name: string;
   email?: string;
   resetPasswordToken?: string;
