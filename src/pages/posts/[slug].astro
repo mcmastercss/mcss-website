@@ -3,7 +3,7 @@ import RichText from "../../components/RichText.astro";
 import Layout from "../../layouts/Layout.astro";
 
 import { getPosts } from "../../api";
-import type { Thumbnail, User, Post } from "../../payload-types";
+import type { Post, User, Thumbnail, Pfp } from "../../payload-types";
 import type { FormattedElement, FormattedText } from "../../rich-text-export";
 
 // Assets
@@ -30,12 +30,22 @@ export interface Props {
 const { post } = Astro.props;
 
 // if image url doesn't exist give it the placeholder image
-const imageOrDefault = (
-  obj: string | Thumbnail | User | unknown,
-  placeholder: string
-) => {};
+const imageOrDefault = (obj: string | Post | User, placeholder: string) => {
+  if (typeof obj === "string") {
+    return obj;
 
-const thumbnail = imageOrDefault(post.thumbnail, placeholderThumbnail.src);
+    // Get thumbnail
+  } else if ("thumbnail" in obj) {
+    const thumbnail = obj.thumbnail as Thumbnail;
+    return "url" in thumbnail ? thumbnail.url : placeholder;
+  } else if ("pfp" in obj) {
+    const pfp = obj.pfp as Pfp;
+    return "url" in pfp ? pfp.url : placeholder;
+  }
+  return placeholder;
+};
+
+const thumbnail = imageOrDefault(post, placeholderThumbnail.src);
 const pfp = imageOrDefault(post.author, placeholderPfp.src);
 const content = post.content as (FormattedElement | FormattedText)[];
 ---
