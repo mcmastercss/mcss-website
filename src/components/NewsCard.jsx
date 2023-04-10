@@ -3,7 +3,7 @@ import defaultImage from "../assets/images/default.jpg";
 
 const NewsCard = ({ title, body, href }) => {
   return (
-    <div className="mb-5 flex w-[25rem] snap-start flex-col rounded-md bg-[#275AE0] px-6 py-8 text-slate-50 shadow-lg">
+    <div className="mb-5 flex w-[25rem] snap-start flex-col rounded-md bg-[#275AE0] px-6 py-8 text-slate-50 shadow-lg z-0">
       <img
         src={defaultImage.src}
         alt=""
