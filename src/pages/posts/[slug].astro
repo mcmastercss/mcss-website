@@ -2,6 +2,7 @@
 import RichText from "../../components/RichText.astro";
 import Layout from "../../layouts/Layout.astro";
 import PostHeader from "../../components/PostHeader.astro";
+import PostFooter from "../../components/PostFooter.astro";
 
 import { getPosts } from "../../api";
 import type { Post, User, Thumbnail, Pfp } from "../../payload-types";
@@ -30,8 +31,6 @@ export interface Props {
 
 const { post } = Astro.props;
 
-
-console.log("balls");
 // if image url doesn't exist give it the placeholder image
 const imageOrDefault = (obj: string | Post | User, placeholder: string) => {
     if (typeof obj === "string") {
@@ -51,12 +50,12 @@ const imageOrDefault = (obj: string | Post | User, placeholder: string) => {
     return placeholder;
 };
 
-
 const thumbnail = imageOrDefault(post, placeholderThumbnail.src);
 const pfp = imageOrDefault(post.author, placeholderPfp.src);
 const content = post.content as (FormattedElement | FormattedText)[];
-
-const category = typeof post.category === "string" ? post.category: post.category.name;
+const category =
+    typeof post.category === "string" ? post.category : post.category.name;
+const author = post.author as User;
 ---
 
 <Layout title={post.title || ""}>
@@ -64,8 +63,19 @@ const category = typeof post.category === "string" ? post.category: post.categor
     <main class="p-6 max-w-3xl m-auto">
         <h2 class="text-blue-600 font-bold text-xl pb-2">{category}</h2>
         <h1 class="text-3xl font-extrabold text-black pb-6">{post.title}</h1>
+        <div class="flex items-center">
+            <img class="w-12 h-12 rounded-full mr-4" src={pfp} alt="" />
+            <div class="flex flex-col">
+                <h4 class="font-bold">{author.name}</h4>
+                <h5 class="">{author.email}</h5>
+            </div>
+            <div class="ml-auto">
+                <h5 class="">{post.publishedDate}</h5>
+            </div>
+        </div>
+
         <img src={thumbnail} alt="" srcset="" />
-        <img src={pfp} alt="" srcset="" />
         {post.content && <RichText richText={content} />}
     </main>
+    <PostFooter />
 </Layout>
