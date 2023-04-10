@@ -5,7 +5,7 @@ import PostHeader from "../../components/PostHeader.astro";
 import PostFooter from "../../components/PostFooter.astro";
 
 import { getPosts } from "../../api";
-import type { Post, User, Thumbnail, Pfp } from "../../payload-types";
+import type { Post, User, Thumbnail, Pfp, Tag, Category } from "../../payload-types";
 import type { FormattedElement, FormattedText } from "../../rich-text-export";
 
 // Assets
@@ -53,29 +53,50 @@ const imageOrDefault = (obj: string | Post | User, placeholder: string) => {
 const thumbnail = imageOrDefault(post, placeholderThumbnail.src);
 const pfp = imageOrDefault(post.author, placeholderPfp.src);
 const content = post.content as (FormattedElement | FormattedText)[];
-const category =
-    typeof post.category === "string" ? post.category : post.category.name;
 const author = post.author as User;
+const publishedDate = new Date(post.publishedDate);
+const formattedDate = publishedDate.toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+});
 ---
 
 <Layout title={post.title || ""}>
     <PostHeader />
-    <main class="p-6 max-w-3xl m-auto">
-        <h2 class="text-blue-600 font-bold text-xl pb-2">{category}</h2>
+    <main class="p-6 lg:p-12 max-w-7xl m-auto">
+        <h2 class="text-blue-600 font-bold text-xl pb-2">{(post.category as Category).name}</h2>
         <h1 class="text-3xl font-extrabold text-black pb-6">{post.title}</h1>
-        <div class="flex items-center">
-            <img class="w-12 h-12 rounded-full mr-4" src={pfp} alt="" />
+        <!-- tags -->
+        {
+            "tags" in post && post.tags.length > 0 && (
+                <h1 class="text-blue-600 text-lg pb-2">Tags</h1>
+                <div class="flex pb-4 gap-3">
+                    {(post.tags as Tag[]).map((item) => (
+                        <p class="text-sm font-bold px-3 py-1 rounded-2xl bg-slate-300">{item.name}</p>
+                    ))}
+                </div>
+            )
+        }
+        <!-- author info -->
+        <div class="flex items-center pb-8">
+            <img
+                class="w-12 h-12 rounded-full mr-4 border-2 border-gray-500"
+                src={pfp}
+                alt=""
+            />
             <div class="flex flex-col">
-                <h4 class="font-bold">{author.name}</h4>
-                <h5 class="">{author.email}</h5>
+                <h4 class="font-extrabold text-xl capitalize">{author.name}</h4>
+                <h5 class="underline">{author.email}</h5>
             </div>
-            <div class="ml-auto">
-                <h5 class="">{post.publishedDate}</h5>
+            <div class="flex flex-col ml-auto text-right">
+                <h4 class="">Published</h4>
+                <h5 class="">{formattedDate}</h5>
             </div>
         </div>
 
-        <img src={thumbnail} alt="" srcset="" />
-        {post.content && <RichText richText={content} />}
+        <img class="rounded-xl w-full" src={thumbnail} alt="" srcset="" />
+        <p class="pt-8">{post.content && <RichText richText={content} />}</p>
     </main>
     <PostFooter />
 </Layout>
