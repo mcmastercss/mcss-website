@@ -5,7 +5,14 @@ import PostHeader from "../../components/PostHeader.astro";
 import PostFooter from "../../components/PostFooter.astro";
 
 import { getPosts } from "../../api";
-import type { Post, User, Thumbnail, Pfp, Tag, Category } from "../../payload-types";
+import type {
+    Post,
+    User,
+    Thumbnail,
+    Pfp,
+    Tag,
+    Category,
+} from "../../payload-types";
 import type { FormattedElement, FormattedText } from "../../rich-text-export";
 
 // Assets
@@ -64,18 +71,30 @@ const formattedDate = publishedDate.toLocaleDateString("en-US", {
 
 <Layout title={post.title || ""}>
     <PostHeader />
-    <main class="p-6 lg:p-12 max-w-7xl m-auto">
-        <h2 class="text-blue-600 font-bold text-xl pb-2">{(post.category as Category).name}</h2>
-        <h1 class="text-3xl font-extrabold text-black pb-6">{post.title}</h1>
+    <main class="p-6 lg:p-12 max-w-[100em] m-auto">
+        <h2 class="text-blue-600 font-bold text-xl lg:text-2xl pb-2">
+            {(post.category as Category).name}
+        </h2>
+        <h1 class="text-3xl lg:text-5xl font-extrabold text-black pb-6">
+            {post.title}
+        </h1>
         <!-- tags -->
         {
             "tags" in post && post.tags.length > 0 && (
-                <h1 class="text-blue-600 text-lg pb-2">Tags</h1>
-                <div class="flex pb-4 gap-3">
-                    {(post.tags as Tag[]).map((item) => (
-                        <p class="text-sm font-bold px-3 py-1 rounded-2xl bg-slate-300">{item.name}</p>
-                    ))}
-                </div>
+                <>
+                    <div class="lg:flex lg:gap-5">
+                        <h1 class="pb-2 text-base lg:text-lg text-blue-600 lg:pb-4 font-semibold">
+                            Tags
+                        </h1>
+                        <div class="flex gap-3 pb-4">
+                            {(post.tags as Tag[]).map((item) => (
+                                <p class="rounded-lg bg-gray-200 px-3 py-1 text-xs lg:text-sm font-semibold">
+                                    {item.name}
+                                </p>
+                            ))}
+                        </div>
+                    </div>
+                </>
             )
         }
         <!-- author info -->
@@ -89,13 +108,21 @@ const formattedDate = publishedDate.toLocaleDateString("en-US", {
                 <h4 class="font-extrabold text-xl capitalize">{author.name}</h4>
                 <h5 class="underline">{author.email}</h5>
             </div>
-            <div class="flex flex-col ml-auto text-right">
-                <h4 class="">Published</h4>
+            <div
+                class="flex flex-col ml-auto text-right lg:flex-row lg:gap-5 lg:self-center"
+            >
+                <h4 class="font-light">Published</h4>
                 <h5 class="">{formattedDate}</h5>
             </div>
         </div>
 
-        <img class="rounded-xl w-full" src={thumbnail} alt="" srcset="" />
+        <!-- thumbnail -->
+        <img
+            class="rounded-lg w-full max-h-96 object-cover"
+            src={thumbnail}
+            alt=""
+            srcset=""
+        />
         <p class="pt-8">{post.content && <RichText richText={content} />}</p>
     </main>
     <PostFooter />
