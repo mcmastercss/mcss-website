@@ -30,10 +30,14 @@ export interface Post {
   publishedDate: string;
   category: string | Category;
   tags?: string[] | Tag[];
+  eventStartTime?: string;
+  eventEndTime?: string;
+  eventLocation?: string;
+  eventLocationURL?: string;
   content?: {
     [k: string]: unknown;
   }[];
-  status?: "draft" | "published";
+  status?: 'draft' | 'published';
   createdAt: string;
   updatedAt: string;
 }
