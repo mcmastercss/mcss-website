@@ -18,6 +18,7 @@
     "@types/react": "^18.0.30",
     "@types/react-dom": "^18.0.11",
     "astro": "^2.1.5",
+    "astro-icon": "^0.8.0",
     "daisyui": "^2.51.5",
     "payload": "^1.6.24",
     "qs": "^6.11.1",

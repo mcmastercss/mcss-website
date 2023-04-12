@@ -3,7 +3,7 @@ import RichText from "../../components/RichText.astro";
 import Layout from "../../layouts/Layout.astro";
 import PostHeader from "../../components/PostHeader.astro";
 import PostFooter from "../../components/PostFooter.astro";
-import UpcomingEvent from "../../components/UpcomingEvent.astro";
+import Event from "../../components/Event.astro";
 
 import { getPosts } from "../../api";
 import type {
@@ -72,7 +72,7 @@ const formattedDate = publishedDate.toLocaleDateString("en-US", {
 
 <Layout title={post.title || ""}>
     <PostHeader />
-    <main class="p-6 lg:p-20 m-auto">
+    <main class="p-6 lg:p-20 xl:px-44 m-auto">
         <h2 class="text-blue-600 font-bold text-xl lg:text-2xl pb-2">
             {(post.category as Category).name}
         </h2>
@@ -121,19 +121,19 @@ const formattedDate = publishedDate.toLocaleDateString("en-US", {
 
         <!-- thumbnail -->
         <div class="flex flex-col">
-            {
-                (post.category as Category).name === "Events" && (
-                    <div class="p-0 lg:w-[26em] lg:p-0 xl:w-[32em] lg:absolute lg:right-32 lg:pt-16">
-                        <UpcomingEvent />
-                    </div>
-                )
-            }
             <img
-                class="rounded-lg pt-7 :lg-pt-0 w-full max-h-[40rem] object-cover"
+                class="rounded pt-7 :lg-pt-0 w-full max-h-[38rem] object-cover"
                 src={thumbnail}
                 alt=""
                 srcset=""
             />
+            {
+                (post.category as Category).name === "Events" && (
+                    <div class="p-0 pt-5 lg:w-[26em] lg:p-0 xl:w-[32em] lg:absolute lg:right-32 lg:pt-16">
+                        <Event client:load eventName={post.title} dateStart={post.eventStartTime} dateEnd={post.eventEndTime} location={post.eventLocation} />
+                    </div>
+                )
+            }
         </div>
         <p class="pt-8">
             {post.content && <RichText richText={content} />}
