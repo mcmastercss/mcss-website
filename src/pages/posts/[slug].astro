@@ -129,7 +129,7 @@ const formattedDate = publishedDate.toLocaleDateString("en-US", {
             />
             {
                 (post.category as Category).name === "Events" && (
-                    <div class="p-0 pt-5 lg:w-[26em] lg:p-0 xl:w-[32em] lg:absolute lg:right-32 lg:pt-16">
+                    <div class="p-0 pt-5 lg:w-[26em] lg:p-0 xl:w-[32em] lg:absolute lg:right-52 lg:pt-28">
                         <Event client:load eventName={post.title} dateStart={post.eventStartTime} dateEnd={post.eventEndTime} location={post.eventLocation} />
                     </div>
                 )
