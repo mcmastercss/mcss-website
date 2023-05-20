@@ -37,7 +37,7 @@ export interface Post {
   content?: {
     [k: string]: unknown;
   }[];
-  status?: 'draft' | 'published';
+  status?: "draft" | "published";
   createdAt: string;
   updatedAt: string;
 }
