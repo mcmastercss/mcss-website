@@ -1,11 +1,11 @@
 import React from "react";
 import defaultImage from "../assets/images/default.jpg";
 
-const NewsCard = ({ title, body, href }) => {
+const NewsCard = ({ title, body, href, thumbnail }) => {
   return (
-    <div className="mb-5 flex w-[25rem] snap-start flex-col rounded-md bg-[#275AE0] px-6 py-8 text-slate-50 shadow-lg z-0">
+    <div className="z-0 mb-5 flex w-[25rem] snap-start flex-col rounded-md bg-[#275AE0] px-6 py-8 text-slate-50 shadow-lg">
       <img
-        src={defaultImage.src}
+        src={thumbnail ? thumbnail : defaultImage}
         alt=""
         className="mb-3 aspect-video rounded-md object-cover"
       />
