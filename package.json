@@ -13,7 +13,7 @@
     "format:check": "prettier --check \"**/*.{ts,tsx,md,mdx,json,js,mjs,cjs}\""
   },
   "dependencies": {
-    "@astrojs/tailwind": "^3.0.1",
+    "@astrojs/tailwind": "^3.1.3",
     "astro": "^2.0.6",
     "tailwindcss": "^3.2.4"
   },
