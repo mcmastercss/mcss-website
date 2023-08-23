@@ -30,7 +30,7 @@ async function getTable<T>(
 ): Promise<PayloadCollection<T>> {
   const stringifiedQuery = qs.stringify(query, { addQueryPrefix: true });
   const data = await apiFetch(
-    `${import.meta.env.PAYLOAD_URL}/api/${table}${stringifiedQuery}`
+    `${import.meta.env.PAYLOAD_URL}/api/${table}/${stringifiedQuery}`
   );
   return data;
 }
