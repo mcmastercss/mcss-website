@@ -1,11 +1,19 @@
-import React from "react";
 import defaultImage from "../assets/images/default.jpg";
 
-const NewsCard = ({ title, body, href, thumbnail }) => {
+export type Title = string;
+
+type Props = {
+  title: string;
+  body: string;
+  href: string;
+  thumbnail_url: string;
+};
+
+const NewsCard = ({ title, body, href, thumbnail_url }: Props) => {
   return (
     <div className="z-0 mb-5 flex w-[25rem] snap-start flex-col rounded-md bg-[#275AE0] px-6 py-8 text-slate-50 shadow-lg">
       <img
-        src={thumbnail ?? defaultImage}
+        src={thumbnail_url ?? defaultImage}
         alt=""
         className="mb-3 aspect-video rounded-md object-cover"
       />
