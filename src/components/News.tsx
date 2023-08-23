@@ -1,10 +1,8 @@
 import NewsCard from "./NewsCard";
 import { getStaticPaths } from "../pages/posts/[slug].astro";
 
-import type { Post, Thumbnail } from "../payload-types";
+import type { Post } from "../payload-types";
 import type { FetchedPost } from "../types";
-
-import defaultImage from "../assets/images/default.jpg";
 
 const posts = await getStaticPaths();
 
@@ -25,18 +23,6 @@ const getMostRecentPosts = (
   return publishedPosts;
 };
 
-const handleThumbnail = (thumbnail: Thumbnail | string | undefined): string => {
-  if (!thumbnail) {
-    return defaultImage.src;
-  }
-  if (typeof thumbnail === "string") {
-    return thumbnail;
-  }
-
-  const nonNullThumbnail = thumbnail as Thumbnail;
-  return nonNullThumbnail.url ?? "";
-};
-
 const NewsSection = () => {
   return (
     <div className="flex flex-col p-8 lg:pl-20 lg:pr-12 xl:pl-44 xl:pr-20">
@@ -49,7 +35,7 @@ const NewsSection = () => {
               title={post.title}
               body={post.summary}
               href={"/posts/" + post.slug}
-              thumbnailURL={handleThumbnail(post.thumbnail)}
+              thumbnail={post.thumbnail}
             />
           );
         })}
