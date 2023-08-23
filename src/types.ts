@@ -1,3 +1,5 @@
+import type { Post } from "./payload-types";
+
 export interface PayloadCollection<CollectionType> {
   totalDocs: number;
   limit: number;
@@ -19,4 +21,13 @@ declare module "slate" {
     Element: FormattedElement;
     Text: FormattedText;
   }
+}
+
+export interface FetchedPost {
+  params: {
+      slug: string | undefined;
+  };
+  props: {
+      post: Post;
+  };
 }
