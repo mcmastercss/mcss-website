@@ -11,15 +11,15 @@ const getMostRecentPosts = (
   fetchedPosts: FetchedPost[],
   minNumberOfPosts: number,
 ): Post[] => {
-  // get the first 10 published posts
+  // get the first minNumberOfPosts published posts
   let publishedPosts: Post[] = [];
   for (const fetchedPost of fetchedPosts) {
     if (publishedPosts.length >= minNumberOfPosts) {
       break;
     }
-    // if (fetchedPost.props.post.status !== "published") {
-    //   continue;
-    // }
+    if (fetchedPost.props.post.status !== "published") {
+      continue;
+    }
     publishedPosts.push(fetchedPost.props.post);
   }
   return publishedPosts;
