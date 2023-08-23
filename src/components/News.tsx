@@ -1,4 +1,3 @@
-import React from "react";
 import NewsCard from "./NewsCard";
 import { getStaticPaths } from "../pages/posts/[slug].astro";
 
@@ -11,7 +10,6 @@ const getMostRecentPosts = (
   fetchedPosts: FetchedPost[],
   minNumberOfPosts: number,
 ): Post[] => {
-  // get the first minNumberOfPosts published posts
   let publishedPosts: Post[] = [];
   for (const fetchedPost of fetchedPosts) {
     if (publishedPosts.length >= minNumberOfPosts) {
@@ -49,7 +47,7 @@ const NewsSection = () => {
               title={post.title}
               body={post.summary}
               href={"/posts/" + post.slug}
-              thumbnail={handleThumbnail(post.thumbnail)}
+              thumbnailURL={handleThumbnail(post.thumbnail)}
             />
           );
         })}
