@@ -8,8 +8,6 @@ const NewsCard = ({ title, body, href, thumbnail }) => {
         className="mb-3 aspect-video rounded-md object-cover"
         src={thumbnail ? thumbnail : defaultImage}
         alt=""
-        width="auto"
-        height="auto"
       />
       <h3 className="text-2xl font-bold">{title}</h3>
       <p className="py-4 text-sm">{body}</p>
