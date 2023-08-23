@@ -4,6 +4,8 @@ import { getStaticPaths } from "../pages/posts/[slug].astro";
 import type { Post, Thumbnail } from "../payload-types";
 import type { FetchedPost } from "../types";
 
+import defaultImage from "../assets/images/default.jpg";
+
 const posts = await getStaticPaths();
 
 const getMostRecentPosts = (
@@ -25,7 +27,7 @@ const getMostRecentPosts = (
 
 const handleThumbnail = (thumbnail: Thumbnail | string | undefined): string => {
   if (!thumbnail) {
-    return "";
+    return defaultImage.src;
   }
   if (typeof thumbnail === "string") {
     return thumbnail;
