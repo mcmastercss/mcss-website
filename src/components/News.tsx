@@ -7,7 +7,10 @@ import type { FetchedPost } from "../types";
 
 const posts = await getStaticPaths();
 
-const getMostRecentPosts = (fetchedPosts: FetchedPost[], minNumberOfPosts: number): Post[] => {
+const getMostRecentPosts = (
+  fetchedPosts: FetchedPost[],
+  minNumberOfPosts: number,
+): Post[] => {
   // get the first 10 published posts
   let publishedPosts: Post[] = [];
   for (const fetchedPost of fetchedPosts) {
@@ -20,7 +23,7 @@ const getMostRecentPosts = (fetchedPosts: FetchedPost[], minNumberOfPosts: numbe
     publishedPosts.push(fetchedPost.props.post);
   }
   return publishedPosts;
-}
+};
 
 const handleThumbnail = (thumbnail: Thumbnail | string | undefined): string => {
   if (!thumbnail) {
@@ -32,7 +35,7 @@ const handleThumbnail = (thumbnail: Thumbnail | string | undefined): string => {
 
   const nonNullThumbnail = thumbnail as Thumbnail;
   return nonNullThumbnail.url ?? "";
-}
+};
 
 const NewsSection = () => {
   return (

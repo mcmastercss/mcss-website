@@ -25,9 +25,9 @@ declare module "slate" {
 
 export interface FetchedPost {
   params: {
-      slug: string | undefined;
+    slug: string | undefined;
   };
   props: {
-      post: Post;
+    post: Post;
   };
 }
