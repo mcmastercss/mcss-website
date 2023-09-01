@@ -19,7 +19,7 @@ const handleThumbnail = (thumbnail: Thumbnail | string | undefined): string => {
   }
 
   const nonNullThumbnail = thumbnail as Thumbnail;
-  return nonNullThumbnail.url ?? defaultImage.src;
+  return nonNullThumbnail?.url !== undefined ? import.meta.env.PAYLOAD_URL + nonNullThumbnail.url : defaultImage.src;
 };
 
 const NewsCard = ({ title, body, href, thumbnail }: Props) => {
