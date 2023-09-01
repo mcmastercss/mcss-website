@@ -1,16 +1,15 @@
 ---
 import { Icon } from "astro-icon";
 
-const { eventName, dateStart, dateEnd, location } = Astro.props;
+const { eventName, dateStart, dateEnd, location, locationurl } = Astro.props;
 
 const dateStartObject = new Date(dateStart);
-console.log(dateStartObject.toDateString());
 const dateEndObject = new Date(dateEnd);
 let formattedStartDate = null;
 let formattedEndDate = null;
 if (dateStartObject.toDateString() == dateEndObject.toDateString()) {
     formattedStartDate = dateStartObject.toLocaleDateString("en-US", {
-        month: "long",
+        month: "short",
         day: "numeric",
         hour: "numeric",
         minute: "numeric",
@@ -19,19 +18,15 @@ if (dateStartObject.toDateString() == dateEndObject.toDateString()) {
         hour: "2-digit",
         minute: "2-digit",
     });
-    // formattedEndDate = dateEndObject.toLocaleDateString("en-US", {
-    //     hour: "numeric",
-    //     minute: "numeric",
-    // });
 } else {
     formattedStartDate = dateStartObject.toLocaleDateString("en-US", {
-        month: "long",
+        month: "short",
         day: "numeric",
         hour: "numeric",
         minute: "numeric",
     });
     formattedEndDate = dateEndObject.toLocaleDateString("en-US", {
-        month: "long",
+        month: "short",
         day: "numeric",
         hour: "numeric",
         minute: "numeric",
@@ -49,7 +44,7 @@ if (dateStartObject.toDateString() == dateEndObject.toDateString()) {
             pack="mdi"
             name="clock-time-four-outline"
             color="#1d4ed8"
-            width="30"
+            width="29"
         />
         <h3 class="font-semibold text-lg">
             {formattedStartDate} - {formattedEndDate}
@@ -60,9 +55,11 @@ if (dateStartObject.toDateString() == dateEndObject.toDateString()) {
             pack="ic"
             name="outline-place"
             color="#1d4ed8"
-            width="33"
+            width="30"
         />
-        <h3 class="font-semibold text-lg">{location}</h3>
+        <a href={locationurl} target="_blank">
+            <h3 class="font-semibold text-lg underline hover:text-blue-400">{location}</h3>
+        </a>
     </div>
 
     <button

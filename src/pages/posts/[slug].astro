@@ -37,7 +37,7 @@ export interface Props {
 }
 
 const { post } = Astro.props;
-
+console.log(post)
 // if image url doesn't exist give it the placeholder image
 const imageOrDefault = (obj: string | Post | User, placeholder: string) => {
 if (typeof obj === "string") {
@@ -50,7 +50,6 @@ if (typeof obj === "string") {
     }
 
     const thumbnail = obj.thumbnail as Thumbnail;
-    console.log(obj.thumbnail)
     return thumbnail?.url !== undefined ? import.meta.env.PAYLOAD_URL + thumbnail.url : placeholder;
     // get pfp
   } else if ("pfp" in obj) {
@@ -141,6 +140,7 @@ const formattedDate = publishedDate.toLocaleDateString("en-US", {
               dateStart={post.eventStartTime}
               dateEnd={post.eventEndTime}
               location={post.eventLocation}
+              locationurl={post.eventLocationURL}
             />
           </div>
         )
