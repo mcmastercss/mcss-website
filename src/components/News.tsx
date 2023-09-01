@@ -33,7 +33,7 @@ const NewsSection = () => {
             <NewsCard
               key={index}
               title={post.title}
-              body={post.summary}
+              summary={post.summary}
               href={"/posts/" + post.slug}
               thumbnail={post.thumbnail}
             />

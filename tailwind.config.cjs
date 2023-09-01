@@ -6,8 +6,8 @@ module.exports = {
       animation: {
         marquee: "marquee 10s linear infinite",
         marquee2: "marquee2 10s linear infinite",
-        marquee3: "marquee3 15s linear infinite",
-        marquee4: "marquee4 15s linear infinite",
+        marquee3: "marquee3 10s linear infinite",
+        marquee4: "marquee4 10s linear infinite",
       },
       keyframes: {
         marquee: {
@@ -20,10 +20,10 @@ module.exports = {
         },
         marquee3: {
           "0%": { transform: "translateX(0%)" },
-          "100%": { transform: "translateX(-258%)" },
+          "100%": { transform: "translateX(-240%)" },
         },
         marquee4: {
-          "0%": { transform: "translateX(258%)" },
+          "0%": { transform: "translateX(240%)" },
           "100%": { transform: "translateX(0%)" },
         },
       },
