@@ -22,7 +22,6 @@ import placeholderPfp from "../../assets/team/placeholder.jpg";
 
 export async function getStaticPaths() {
   const posts = await getPosts();
-  // console.log(posts);
   const paths = posts.docs.map((post) => {
     return {
       params: { slug: post.slug },
@@ -41,7 +40,7 @@ const { post } = Astro.props;
 
 // if image url doesn't exist give it the placeholder image
 const imageOrDefault = (obj: string | Post | User, placeholder: string) => {
-  if (typeof obj === "string") {
+if (typeof obj === "string") {
     return obj;
 
     // Get thumbnail
@@ -51,15 +50,16 @@ const imageOrDefault = (obj: string | Post | User, placeholder: string) => {
     }
 
     const thumbnail = obj.thumbnail as Thumbnail;
-    return thumbnail?.url ?? placeholder;
+    console.log(obj.thumbnail)
+    return thumbnail?.url !== undefined ? import.meta.env.PAYLOAD_URL + thumbnail.url : placeholder;
     // get pfp
   } else if ("pfp" in obj) {
     if (typeof obj.pfp === "string") {
       return obj.pfp as string;
     }
-
+    
     const pfp = obj.pfp as Pfp;
-    return pfp?.url ?? placeholder;
+    return pfp?.url !== undefined ? import.meta.env.PAYLOAD_URL + pfp.url : placeholder;
   }
 
   // default to placeholder
