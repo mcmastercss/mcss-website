@@ -10,6 +10,14 @@ type Props = {
   thumbnail: Thumbnail | string | undefined;
 };
 
+const capString = (inputString:string, maxLength:number) => {
+  if (inputString.length <= maxLength) {
+    return inputString;
+  } else {
+    return inputString.slice(0, maxLength) + '...';
+  }
+}
+
 const handleThumbnail = (thumbnail: Thumbnail | string | undefined): string => {
   if (!thumbnail) {
     return defaultImage.src;
@@ -24,19 +32,17 @@ const handleThumbnail = (thumbnail: Thumbnail | string | undefined): string => {
 
 const NewsCard = ({ title, summary, href, thumbnail }: Props) => {
   return (
-    <div className="z-0 mb-5 flex w-[25rem] snap-start flex-col rounded-md bg-[#275AE0] px-0 py-0 text-slate-50 shadow-lg">
+    <div className="z-0 mb-5 flex w-[23rem] snap-start flex-col rounded-md bg-[#275AE0] px-0 py-0 text-slate-50 shadow-lg">
       <img
         className="aspect-video rounded-md object-cover"
         src={handleThumbnail(thumbnail)}
         alt=""
       />
-      <div className="px-7 py-5">
-        <h3 className="text-2xl font-bold capitalize">{title}</h3>
-        <p className="text-sm font-light pt-2 pb-5">{summary}</p>
-        <a href={href} className="w-fit underline font-medium hover:text-neutral-200">
-          Read More
-        </a>
-      </div>
+      <h3 className="text-2xl font-bold px-8 pt-5 pb-3 capitalize">{title}</h3>
+      <p className="text-sm px-8 font-light">{capString(summary, 300)}</p>
+      <a href={href} className="mt-auto px-8 pt-4 pb-5 underline font-semibold hover:text-neutral-200">
+        Read More
+      </a>
     </div>
   );
 };

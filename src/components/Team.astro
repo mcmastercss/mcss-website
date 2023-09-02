@@ -21,30 +21,30 @@ const getNameFromSrc = (src:any) => {
 </h3> -->
 <!-- animate-marquee3 lg:animate-marquee -->
 <!-- animate-marquee4 lg:animate-marquee2 -->
-<div class="relative flex pt-20 justify-around overflow-x-hidden">
+<div class="relative flex pt-20 overflow-x-hidden">
   <div
-    class="flex animate-marquee whitespace-nowrap"
+    class="flex lg:gap-4 animate-marquee whitespace-nowrap"
   >
     {
       filteredImages.map((image) => (
       <div class="tooltip tooltip-top" data-tip={getNameFromSrc(image.default.src)}>
         <img
           src={image.default.src}
-          class="lg:mx-4.5 mx-8 rounded-full border-4 hover:border-[#5884FB] h-16 min-w-max md:h-20"
+          class="lg:mx-4.5 mx-8 rounded-full border-4 hover:border-zinc-900 h-16 min-w-max md:h-20"
         />
       </div>
       ))
     }
   </div>
   <div
-    class="absolute flex animate-marquee2 whitespace-nowrap"
+    class="absolute -left-0 lg:left-14 flex lg:gap-4 animate-marquee2 whitespace-nowrap"
   >
     {
       filteredImages.map((image) => (
       <div class="tooltip tooltip-top" data-tip={getNameFromSrc(image.default.src)}>
         <img
           src={image.default.src}
-          class="lg:mx-4.5 mx-8 rounded-full border-4 hover:border-[#5884FB] h-16 min-w-max md:h-20"
+          class="lg:mx-4.5 mx-8 rounded-full border-4 hover:border-zinc-900 h-16 min-w-max md:h-20"
         />
       </div>
       ))
@@ -66,6 +66,6 @@ const getNameFromSrc = (src:any) => {
   .tooltip:before {
     --tooltip-color: white;;
     --tooltip-text-color: black;
-    @apply font-semibold
+    @apply font-semibold border-2 border-zinc-900
 }
 </style>

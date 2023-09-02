@@ -18,7 +18,7 @@ export interface Config {
 }
 export interface Category {
   id: string;
-  name: string;
+  name: string; // "News" or "Event"
 }
 export interface Post {
   id: string;
@@ -28,7 +28,7 @@ export interface Post {
   slug?: string;
   author: string | User;
   publishedDate: string;
-  category: string | Category;
+  category: string | Category; 
   tags?: string[] | Tag[];
   eventStartTime?: string;
   eventEndTime?: string;

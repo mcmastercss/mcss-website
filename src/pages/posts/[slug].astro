@@ -37,7 +37,6 @@ export interface Props {
 }
 
 const { post } = Astro.props;
-console.log(post)
 // if image url doesn't exist give it the placeholder image
 const imageOrDefault = (obj: string | Post | User, placeholder: string) => {
 if (typeof obj === "string") {
@@ -133,7 +132,7 @@ const formattedDate = publishedDate.toLocaleDateString("en-US", {
         srcset=""
       />
       {
-        (post.category as Category).name === "Events" && (
+        (post.category as Category).name === "Event" && (
           <div class="p-0 pt-5 lg:absolute lg:right-52 lg:w-[26em] lg:p-0 lg:pt-28 xl:w-[32em]">
             <Event
               eventName={post.title}
