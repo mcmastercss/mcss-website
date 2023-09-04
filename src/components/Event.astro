@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon";
+import { capString } from "../utils/globalFunctions";
 
 const { eventName, dateStart, dateEnd, location, locationurl } = Astro.props;
 
@@ -32,13 +33,15 @@ if (dateStartObject.toDateString() == dateEndObject.toDateString()) {
         minute: "numeric",
     });
 }
+
+console.log(typeof location)
 ---
 
 <div
     class="bg-white text-blue-700 border-[8px] lg:border-[12px] border-blue-400 py-4 lg:py-6 px-6 rounded-3xl shadow-lg flex-initial z-10"
 >
     <h1 class="font-medium text-xl lg:text-xl pb-3">Sign up</h1>
-    <h1 class="font-black text-2xl lg:text-3xl pb-3">{eventName}</h1>
+    <h1 class="font-black text-2xl lg:text-3xl pb-3 w-9/12 break-words">{capString(eventName,40)}</h1>
     <div class="flex gap-2 lg:gap-4 py-2">
         <Icon
             pack="mdi"
@@ -57,9 +60,26 @@ if (dateStartObject.toDateString() == dateEndObject.toDateString()) {
             color="#1d4ed8"
             width="30"
         />
-        <a href={locationurl} target="_blank">
-            <h3 class="font-semibold text-lg underline hover:text-blue-400">{location}</h3>
-        </a>
+        { (locationurl !== undefined && location !== "") &&(
+            <a href={locationurl} target="_blank">
+                <h3 class="font-semibold text-lg underline hover:text-blue-400">{location}</h3>
+            </a>
+        )
+        }
+        { (locationurl !== undefined && location === "") && (
+            <a href={locationurl} target="_blank">
+                <h3 class="font-semibold text-lg underline hover:text-blue-400">{locationurl}</h3>
+            </a>
+        )
+        }
+        { (locationurl === undefined && location !== "") && (
+            <h3 class="font-semibold text-lg">{location}</h3>
+        )
+        }
+        { (locationurl === undefined && location === "") && (
+            <h3 class="font-semibold text-lg">NA</h3>
+        )
+        }
     </div>
 
     <button

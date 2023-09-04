@@ -1,5 +1,6 @@
 import type { Thumbnail } from "../payload-types";
 import defaultImage from "../assets/images/default.jpg";
+import { capString } from "../utils/globalFunctions";
 
 export type Title = string;
 
@@ -9,14 +10,6 @@ type Props = {
   href: string;
   thumbnail: Thumbnail | string | undefined;
 };
-
-const capString = (inputString:string, maxLength:number) => {
-  if (inputString.length <= maxLength) {
-    return inputString;
-  } else {
-    return inputString.slice(0, maxLength) + '...';
-  }
-}
 
 const handleThumbnail = (thumbnail: Thumbnail | string | undefined): string => {
   if (!thumbnail) {
@@ -38,7 +31,7 @@ const NewsCard = ({ title, summary, href, thumbnail }: Props) => {
         src={handleThumbnail(thumbnail)}
         alt=""
       />
-      <h3 className="text-2xl font-bold px-8 pt-5 pb-3 capitalize">{title}</h3>
+      <h3 className="text-2xl font-bold px-8 pt-5 pb-3 capitalize">{capString(title, 50)}</h3>
       <p className="text-sm px-8 font-light">{capString(summary, 300)}</p>
       <a href={href} className="mt-auto px-8 pt-4 pb-5 underline font-semibold hover:text-neutral-200">
         Read More

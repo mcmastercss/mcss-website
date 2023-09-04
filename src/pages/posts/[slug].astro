@@ -4,6 +4,7 @@ import Layout from "../../layouts/Layout.astro";
 import PostHeader from "../../components/PostHeader.astro";
 import PostFooter from "../../components/PostFooter.astro";
 import Event from "../../components/Event.astro";
+import { capString } from "../../utils/globalFunctions";
 
 import { getPosts } from "../../api";
 import type {
@@ -82,8 +83,8 @@ const formattedDate = publishedDate.toLocaleDateString("en-US", {
     <h2 class="text-blue-600 font-bold text-xl lg:text-2xl pb-2">
       {(post.category as Category).name}
     </h2>
-    <h1 class="text-3xl lg:text-5xl font-extrabold text-black pb-6 capitalize">
-      {post.title}
+    <h1 class="text-3xl lg:text-5xl font-extrabold text-black pb-6 capitalize break-words w-10/12">
+      {capString(post.title, 50)}
     </h1>
     <!-- tags -->
     {

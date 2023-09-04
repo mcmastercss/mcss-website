@@ -28,7 +28,7 @@ async function getTable<T>(
   table: string,
   query: any = null,
 ): Promise<PayloadCollection<T>> {
-  const stringifiedQuery = qs.stringify(query, { addQueryPrefix: true });
+  const stringifiedQuery = qs.stringify({ where: query }, { addQueryPrefix: true });
   const data = await apiFetch(
     `${import.meta.env.PAYLOAD_URL}/api/${table}/${stringifiedQuery}`,
   );
@@ -47,4 +47,38 @@ export async function getPfps(
   query: any = null,
 ): Promise<PayloadCollection<Pfp>> {
   return getTable<Pfp>("pfps", query);
+}
+
+
+export async function getUpcomingEvent(): Promise<Post> {
+  const currentDate = new Date();
+
+  const query = {
+    and: [{
+      "status": {
+        equals: "published"
+      },
+      "category.name": {
+        equals: "Event"
+      },
+      "eventStartTime": {
+        not_equals: null
+      }
+    }
+    ]
+  }
+
+  const posts = await getPosts(query)
+
+  const upcomingEvent = posts.docs.reduce((closestEvent: Post, event: Post) => {
+    const eventTime = new Date(event.eventStartTime!);
+    const closestEventTime = new Date(closestEvent.eventStartTime!);
+    if (eventTime < closestEventTime && eventTime > currentDate) {
+      return event;
+    } else {
+      return closestEvent;
+    }
+  }, posts.docs[0]!);
+
+  return upcomingEvent
 }
