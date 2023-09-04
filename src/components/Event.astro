@@ -8,6 +8,8 @@ const dateStartObject = new Date(dateStart);
 const dateEndObject = new Date(dateEnd);
 let formattedStartDate = null;
 let formattedEndDate = null;
+
+
 if (dateStartObject.toDateString() == dateEndObject.toDateString()) {
     formattedStartDate = dateStartObject.toLocaleDateString("en-US", {
         month: "short",
@@ -34,56 +36,84 @@ if (dateStartObject.toDateString() == dateEndObject.toDateString()) {
     });
 }
 
-console.log(typeof location)
+console.log(dateEnd)
 ---
 
 <div
     class="bg-white text-blue-700 border-[8px] lg:border-[12px] border-blue-400 py-4 lg:py-6 px-6 rounded-3xl shadow-lg flex-initial z-10"
 >
     <h1 class="font-medium text-xl lg:text-xl pb-3">Sign up</h1>
-    <h1 class="font-black text-2xl lg:text-3xl pb-3 w-9/12 break-words">{capString(eventName,40)}</h1>
-    <div class="flex gap-2 lg:gap-4 py-2">
-        <Icon
-            pack="mdi"
-            name="clock-time-four-outline"
-            color="#1d4ed8"
-            width="29"
-        />
-        <h3 class="font-semibold text-lg">
-            {formattedStartDate} - {formattedEndDate}
-        </h3>
-    </div>
-    <div class="flex gap-2 lg:gap-4 pt-2 pb-5">
-        <Icon
-            pack="ic"
-            name="outline-place"
-            color="#1d4ed8"
-            width="30"
-        />
-        { (locationurl !== undefined && location !== "") &&(
-            <a href={locationurl} target="_blank">
-                <h3 class="font-semibold text-lg underline hover:text-blue-400">{location}</h3>
-            </a>
-        )
-        }
-        { (locationurl !== undefined && location === "") && (
-            <a href={locationurl} target="_blank">
-                <h3 class="font-semibold text-lg underline hover:text-blue-400">{locationurl}</h3>
-            </a>
-        )
-        }
-        { (locationurl === undefined && location !== "") && (
-            <h3 class="font-semibold text-lg">{location}</h3>
-        )
-        }
-        { (locationurl === undefined && location === "") && (
-            <h3 class="font-semibold text-lg">NA</h3>
-        )
-        }
+    <h1 class="font-black text-2xl lg:text-3xl pb-3 w-9/12 break-words mb-1">{capString(eventName,40)}</h1>
+    <div class="flex flex-col gap-2">
+        <div class="flex gap-2 lg:gap-4">
+            { (dateStart !== null && dateEnd !== null) &&
+                (
+                    <Icon
+                        pack="mdi"
+                        name="clock-time-four-outline"
+                        color="#1d4ed8"
+                        width="29"
+                    />
+                    <h3 class="font-semibold text-lg">
+                        {formattedStartDate} - {formattedEndDate}
+                    </h3>
+                )
+            }
+            { (dateStart !== null && dateEnd === null) &&
+                (
+                    <Icon
+                        pack="mdi"
+                        name="clock-time-four-outline"
+                        color="#1d4ed8"
+                        width="29"
+                    />
+                    <h3 class="font-semibold text-lg">
+                        {formattedStartDate}
+                    </h3>
+                )
+            }
+        </div>
+        <div class="flex gap-2 lg:gap-4">
+        
+            { (locationurl !== undefined && location !== "") &&(
+                <Icon
+                    pack="ic"
+                    name="outline-place"
+                    color="#1d4ed8"
+                    width="30"
+                />
+                <a href={locationurl} target="_blank">
+                    <h3 class="font-semibold text-lg underline hover:text-blue-400 pb-5">{location}</h3>
+                </a>
+            )
+            }
+            { (locationurl !== undefined && location === "") && (
+                <Icon
+                        pack="ic"
+                        name="outline-place"
+                        color="#1d4ed8"
+                        width="30"
+                    />
+                <a href={locationurl} target="_blank">
+                    <h3 class="font-semibold text-lg underline hover:text-blue-400 pb-5">{locationurl}</h3>
+                </a>
+            )
+            }
+            { (locationurl === undefined && location !== "") && (
+                <Icon
+                        pack="ic"
+                        name="outline-place"
+                        color="#1d4ed8"
+                        width="30"
+                    />
+                <h3 class="font-semibold text-lg">{location}</h3>
+            )
+            }
+        </div>
     </div>
 
     <button
-        class="btn btn-md bg-blue-700 hover:bg-blue-800 w-full rounded-md font-semibold text-base lg:text-xl text-white"
+        class="btn btn-md mt-2 lg:mt-5 bg-blue-700 hover:bg-blue-800 w-full rounded-md font-semibold text-base lg:text-xl text-white"
         >RSVP</button
     >
 </div>
