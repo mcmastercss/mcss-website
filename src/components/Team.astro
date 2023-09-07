@@ -1,19 +1,18 @@
 ---
-// import { getPfps } from "../api";
-// const docs = await getPfps({ limit: 100, sort: "slug" });
-// const collections = docs.docs;
-
-const images = await Astro.glob('../assets/team/*.jpg');
-const filteredImages = images.filter((file) => {
-  const fileName = file.default.src.match(/\/([^\/?]+)\.[a-z]+(\?|$)/i)[1];
-  return fileName !== 'placeholder';
-});
-
-const getNameFromSrc = (src:any) => {
-  // get the name from the filename and capitalize it
-  const name = src.match(/\/([^\/?]+)\.[a-z]+(\?|$)/i)[1];
-  return name.charAt(0).toUpperCase() + name.slice(1);;
+import { Image } from "astro:assets";
+import ArianProfile from "../../src/assets/team/arian.jpg";
+interface TeamMember {
+  name: string;
+  role: string;
+  image: ImageMetadata;
 }
+const team: TeamMember[] = [
+  {
+    name: "Arian",
+    role: "Ahmadinejad",
+    image: ArianProfile
+  }
+]
 ---
 
 <!-- <h3 class="text-2xl font-semibold text-center text-blue-600">
@@ -26,11 +25,14 @@ const getNameFromSrc = (src:any) => {
     class="flex lg:gap-4 animate-marquee whitespace-nowrap"
   >
     {
-      filteredImages.map((image) => (
-      <div class="tooltip tooltip-top" data-tip={getNameFromSrc(image.default.src)}>
-        <img
-          src={image.default.src}
-          class="lg:mx-4.5 mx-8 rounded-full border-4 hover:border-zinc-900 h-16 min-w-max md:h-20"
+      team.map((image) => (
+      <div class="tooltip tooltip-top" data-tip={image.name}>
+        <Image
+          src={image.image}
+          class="aspect-square lg:mx-4.5 mx-8 rounded-full border-4 hover:border-zinc-900 h-16 min-w-max md:h-20"
+          alt={image.name}
+          width={100}
+          height={100}
         />
       </div>
       ))
@@ -40,11 +42,12 @@ const getNameFromSrc = (src:any) => {
     class="absolute -left-0 lg:left-14 flex lg:gap-4 animate-marquee2 whitespace-nowrap"
   >
     {
-      filteredImages.map((image) => (
-      <div class="tooltip tooltip-top" data-tip={getNameFromSrc(image.default.src)}>
-        <img
-          src={image.default.src}
-          class="lg:mx-4.5 mx-8 rounded-full border-4 hover:border-zinc-900 h-16 min-w-max md:h-20"
+      team.map((image) => (
+      <div class="tooltip tooltip-top" data-tip={image.name}>
+        <Image
+          src={image.image}
+          class="aspect-square lg:mx-4.5 mx-8 rounded-full border-4 hover:border-zinc-900 h-16 min-w-max md:h-20"
+          alt={image.name}
         />
       </div>
       ))
