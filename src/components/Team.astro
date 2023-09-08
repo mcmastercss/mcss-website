@@ -4,6 +4,7 @@ import ArianProfile from "../../src/assets/team/arian.jpg";
 import KhaiProfile from "../../src/assets/team/khai.jpg";
 import ArruranProfile from "../../src/assets/team/arruran.jpg";
 import HaqProfile from "../../src/assets/team/haq.jpg";
+import NihalProfile from "../../src/assets/team/nihal.jpg";
 interface TeamMember {
   name: string;
   role: string;
@@ -13,46 +14,47 @@ const team: TeamMember[] = [
   {
     name: "Arian Ahmadinejad",
     role: "Techincal Manager",
-    image: ArianProfile
+    image: ArianProfile,
   },
   {
     name: "khai",
     role: "Director",
-    image: KhaiProfile
+    image: KhaiProfile,
   },
   {
     name: "arruran",
     role: "IDK",
-    image: ArruranProfile
+    image: ArruranProfile,
   },
   {
     name: "haq",
     role: "IDK",
-    image: HaqProfile
-  }
-]
+    image: HaqProfile,
+  },
+  {
+    name: "nihal",
+    role: "IDK",
+    image: NihalProfile,
+  },
+];
 ---
 
 <!-- <h3 class="text-2xl font-semibold text-center text-blue-600">
   run with ❤️ for students by students
-</h3> -->
-<!-- animate-marquee3 lg:animate-marquee -->
-<!-- animate-marquee4 lg:animate-marquee2 -->
+</h3> --><!-- animate-marquee3 lg:animate-marquee --><!-- animate-marquee4 lg:animate-marquee2 -->
 <div class="relative flex pt-20 overflow-x-hidden">
-  <div
-    class="flex lg:gap-4 animate-marquee whitespace-nowrap"
-  >
+  <div class="flex lg:gap-4 animate-marquee whitespace-nowrap">
     {
       team.map((image) => (
-      <div class="tooltip tooltip-top" data-tip={image.name}>
-        <Image
-          src={image.image}
-          class="aspect-square lg:mx-4.5 mx-8 rounded-full border-4 hover:border-zinc-900 h-16 min-w-max md:h-20"
-          alt={image.name}
-          width={100}
-          height={100}
-        />
-      </div>
+        <div class="tooltip tooltip-top" data-tip={image.name}>
+          <Image
+            src={image.image}
+            class="lg:mx-4.5 mx-8 aspect-square h-16 min-w-max rounded-full border-4 hover:border-zinc-900 md:h-20"
+            alt={image.name}
+            width={100}
+            height={100}
+          />
+        </div>
       ))
     }
   </div>
@@ -61,13 +63,13 @@ const team: TeamMember[] = [
   >
     {
       team.map((image) => (
-      <div class="tooltip tooltip-top" data-tip={image.name}>
-        <Image
-          src={image.image}
-          class="aspect-square lg:mx-4.5 mx-8 rounded-full border-4 hover:border-zinc-900 h-16 min-w-max md:h-20"
-          alt={image.name}
-        />
-      </div>
+        <div class="tooltip tooltip-top" data-tip={image.name}>
+          <Image
+            src={image.image}
+            class="lg:mx-4.5 mx-8 aspect-square h-16 min-w-max rounded-full border-4 hover:border-zinc-900 md:h-20"
+            alt={image.name}
+          />
+        </div>
       ))
     }
   </div>
@@ -85,8 +87,8 @@ const team: TeamMember[] = [
     -ms-overflow-style: none;
   }
   .tooltip:before {
-    --tooltip-color: white;;
+    --tooltip-color: white;
     --tooltip-text-color: black;
-    @apply font-semibold border-2 border-zinc-900
-}
+    @apply border-2 border-zinc-900 font-semibold;
+  }
 </style>
