@@ -1,6 +1,9 @@
 ---
 import { Image } from "astro:assets";
 import ArianProfile from "../../src/assets/team/arian.jpg";
+import KhaiProfile from "../../src/assets/team/khai.jpg";
+import ArruranProfile from "../../src/assets/team/arruran.jpg";
+import HaqProfile from "../../src/assets/team/haq.jpg";
 interface TeamMember {
   name: string;
   role: string;
@@ -8,9 +11,24 @@ interface TeamMember {
 }
 const team: TeamMember[] = [
   {
-    name: "Arian",
-    role: "Ahmadinejad",
+    name: "Arian Ahmadinejad",
+    role: "Techincal Manager",
     image: ArianProfile
+  },
+  {
+    name: "khai",
+    role: "Director",
+    image: KhaiProfile
+  },
+  {
+    name: "arruran",
+    role: "IDK",
+    image: ArruranProfile
+  },
+  {
+    name: "haq",
+    role: "IDK",
+    image: HaqProfile
   }
 ]
 ---
