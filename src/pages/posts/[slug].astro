@@ -40,7 +40,7 @@ export interface Props {
 const { post } = Astro.props;
 // if image url doesn't exist give it the placeholder image
 const imageOrDefault = (obj: string | Post | User, placeholder: string) => {
-if (typeof obj === "string") {
+  if (typeof obj === "string") {
     return obj;
 
     // Get thumbnail
@@ -50,15 +50,19 @@ if (typeof obj === "string") {
     }
 
     const thumbnail = obj.thumbnail as Thumbnail;
-    return thumbnail?.url !== undefined ? import.meta.env.PAYLOAD_URL + thumbnail.url : placeholder;
+    return thumbnail?.url !== undefined
+      ? import.meta.env.PAYLOAD_URL + thumbnail.url
+      : placeholder;
     // get pfp
   } else if ("pfp" in obj) {
     if (typeof obj.pfp === "string") {
       return obj.pfp as string;
     }
-    
+
     const pfp = obj.pfp as Pfp;
-    return pfp?.url !== undefined ? import.meta.env.PAYLOAD_URL + pfp.url : placeholder;
+    return pfp?.url !== undefined
+      ? import.meta.env.PAYLOAD_URL + pfp.url
+      : placeholder;
   }
 
   // default to placeholder
@@ -83,7 +87,9 @@ const formattedDate = publishedDate.toLocaleDateString("en-US", {
     <h2 class="text-blue-600 font-bold text-xl lg:text-2xl pb-2">
       {(post.category as Category).name}
     </h2>
-    <h1 class="text-3xl lg:text-5xl font-extrabold text-black pb-6 capitalize break-words w-10/12">
+    <h1
+      class="text-3xl lg:text-5xl font-extrabold text-black pb-6 capitalize break-words w-10/12"
+    >
       {capString(post.title, 50)}
     </h1>
     <!-- tags -->

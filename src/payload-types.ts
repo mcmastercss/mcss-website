@@ -28,7 +28,7 @@ export interface Post {
   slug?: string;
   author: string | User;
   publishedDate: string;
-  category: string | Category; 
+  category: string | Category;
   tags?: string[] | Tag[];
   eventStartTime?: string;
   eventEndTime?: string;

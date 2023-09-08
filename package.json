@@ -9,8 +9,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "format": "prettier --write \"**/*.{ts,tsx,md,mdx,json,js,mjs,cjs}\"",
-    "format:check": "prettier --check \"**/*.{ts,tsx,md,mdx,json,js,mjs,cjs}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md,mdx,json,js,mjs,cjs,astro}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,md,mdx,json,js,mjs,cjs,astro}\""
   },
   "dependencies": {
     "@astrojs/react": "^2.3.2",

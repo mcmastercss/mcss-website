@@ -20,7 +20,9 @@ const handleThumbnail = (thumbnail: Thumbnail | string | undefined): string => {
   }
 
   const nonNullThumbnail = thumbnail as Thumbnail;
-  return nonNullThumbnail?.url !== undefined ? import.meta.env.PAYLOAD_URL + nonNullThumbnail.url : defaultImage.src;
+  return nonNullThumbnail?.url !== undefined
+    ? import.meta.env.PAYLOAD_URL + nonNullThumbnail.url
+    : defaultImage.src;
 };
 
 const NewsCard = ({ title, summary, href, thumbnail }: Props) => {
@@ -31,9 +33,14 @@ const NewsCard = ({ title, summary, href, thumbnail }: Props) => {
         src={handleThumbnail(thumbnail)}
         alt=""
       />
-      <h3 className="text-2xl font-bold px-8 pt-5 pb-3 capitalize">{capString(title, 50)}</h3>
-      <p className="text-sm px-8 font-light">{capString(summary, 300)}</p>
-      <a href={href} className="mt-auto px-8 pt-4 pb-5 underline font-semibold hover:text-neutral-200">
+      <h3 className="px-8 pb-3 pt-5 text-2xl font-bold capitalize">
+        {capString(title, 50)}
+      </h3>
+      <p className="px-8 text-sm font-light">{capString(summary, 300)}</p>
+      <a
+        href={href}
+        className="mt-auto px-8 pb-5 pt-4 font-semibold underline hover:text-neutral-200"
+      >
         Read More
       </a>
     </div>
