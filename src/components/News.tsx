@@ -8,7 +8,7 @@ const posts = await getStaticPaths();
 
 const getMostRecentPosts = (
   fetchedPosts: FetchedPost[],
-  maxNumberOfPosts: number
+  maxNumberOfPosts: number,
 ): Post[] => {
   let publishedPosts: Post[] = [];
   for (const fetchedPost of fetchedPosts) {
