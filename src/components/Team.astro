@@ -93,13 +93,13 @@ const team: TeamMember[] = [
   run with ❤️ for students by students
 </h3> --><!-- animate-marquee3 lg:animate-marquee --><!-- animate-marquee4 lg:animate-marquee2 -->
 <div class="relative flex pt-20 overflow-x-hidden"> <!--container -->
-  <div class="flex lg:gap-4 animate-marquee  whitespace-nowrap"> <!--og -->
+  <div class="flex gap-4 animate-marquee whitespace-nowrap"> <!--og -->
     {
       team.map((image) => (
-        <div class="tooltip tooltip-top" data-tip={image.name}>
+        <div class="tooltip tooltip-top h-16 w-16" data-tip={image.name}>
           <Image
             src={image.image}
-            class="lg:mx-4.5 mx-8 aspect-square h-16 min-w-max rounded-full border-4 hover:border-zinc-900 md:h-20"
+            class="h-16 w-16 rounded-full border-4 hover:border-zinc-900"
             alt={image.name}
             width={100}
             height={100}
@@ -108,13 +108,13 @@ const team: TeamMember[] = [
       ))
     }
   </div>
-  <div class="flex lg:gap-4 animate-marquee ml-4 whitespace-nowrap"> <!--og -->
+  <div class="flex gap-4 animate-marquee whitespace-nowrap bg-red-40 ml-4"> <!--og -->
     {
       team.map((image) => (
-        <div class="tooltip tooltip-top" data-tip={image.name}>
+        <div class="tooltip tooltip-top h-16 w-16" data-tip={image.name}>
           <Image
             src={image.image}
-            class="lg:mx-4.5 mx-8 aspect-square h-16 min-w-max rounded-full border-4 hover:border-zinc-900 md:h-20"
+            class="h-16 w-16 rounded-full border-4 hover:border-zinc-900"
             alt={image.name}
             width={100}
             height={100}
