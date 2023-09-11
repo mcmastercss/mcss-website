@@ -89,7 +89,6 @@ export async function getUpcomingEvent(): Promise<Post | null> {
       return closestEvent;
     }
   }, posts.docs[0]!);
-  console.log(posts.docs.length);
 
   return upcomingEvent;
 }
