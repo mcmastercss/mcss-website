@@ -1,0 +1,152 @@
+---
+import { Image } from "astro:assets";
+import ArianProfile from "../../src/assets/team/Arian_Ahmadinejad.jpg";
+import KennyProfile from "../../src/assets/team/Kenny_Zhao.png";
+import AizazProfile from "../../src/assets/team/Aizaz_Lodhi.png";
+import AnkushProfile from "../../src/assets/team/Ankush_Sarkar.png";
+import DevanshProfile from "../../src/assets/team/Devansh_Singh.png";
+import FaizanProfile from "../../src/assets/team/Faizan_Muhammad.jpg";
+import HaleyProfile from "../../src/assets/team/Haley_Johnson.png";
+import HashimProfile from "../../src/assets/team/Hashim_Butt.png";
+import InsiahProfile from "../../src/assets/team/Insiyah_Yusuf_Ujjain.png";
+import IshpreetProfile from "../../src/assets/team/Ishpreet_Nagi.png";
+import MustafaProfile from "../../src/assets/team/Mustafa_Abdulameer.png";
+import NatahnProfile from "../../src/assets/team/Nathan_Hart.png";
+import OwenProfile from "../../src/assets/team/Owen_Gretzinger.jpeg";
+import ProyeteiProfile from "../../src/assets/team/Proyetei_Akanda.png";
+
+interface TeamMember {
+  name: string;
+  role: string;
+  image: ImageMetadata;
+}
+const team: TeamMember[] = [
+  {
+    name: "Arian Ahmadinejad",
+    role: "Techincal Mangé",
+    image: ArianProfile,
+  },
+  {
+    name: "Kenny Zhao",
+    role: "Year Representative",
+    image: KennyProfile,
+  },
+  {
+    name: "Aizaz Lodhi",
+    role: "2nd Year Representative",
+    image: AizazProfile,
+  },
+  {
+    name: "Ankush Sarkar",
+    role: "Year Representative",
+    image: AnkushProfile,
+  },
+  {
+    name: "Devansh Singh",
+    role: "Academic Executive",
+    image: DevanshProfile,
+  },
+  {
+    name: "Faizan Muhammad",
+    role: "Events Executive",
+    image: FaizanProfile,
+  },
+  {
+    name: "Haley Johnson",
+    role: "Social Media Manager",
+    image: HaleyProfile,
+  },
+  {
+    name: "Hashim Butt",
+    role: "Academic Team Member",
+    image: HashimProfile,
+  },
+  {
+    name: "Insiyah Yusuf Ujjain",
+    role: "Social media manager",
+    image: InsiahProfile,
+  },
+  {
+    name: "Ishpreet Nagi",
+    role: "3rd Year Representative",
+    image: IshpreetProfile,
+  },
+  {
+    name: "Mustafa Abdulameer",
+    role: "Academic Team Member",
+    image: MustafaProfile,
+  },
+  {
+    name: "Nathan Hart",
+    role: "Lead Year Representative",
+    image: NatahnProfile,
+  },
+  {
+    name: "Owen Gretzinger",
+    role: "Year Representative",
+    image: OwenProfile,
+  },
+  {
+    name: "Proyetei Akanda",
+    role: "Director of Marketing",
+    image: ProyeteiProfile,
+  },
+];
+---
+
+<!-- <h3 class="text-2xl font-semibold text-center text-blue-600">
+  run with ❤️ for students by students
+</h3> --><!-- animate-marquee3 lg:animate-marquee --><!-- animate-marquee4 lg:animate-marquee2 -->
+<div class="relative flex pt-20 overflow-x-hidden">
+  <!--container -->
+  <div class="flex gap-4 animate-marquee whitespace-nowrap">
+    <!--og -->
+    {
+      team.map((member) => (
+        <div class="tooltip tooltip-top h-16 w-16" data-tip={member.name}>
+          <Image
+            src={member.image}
+            class="h-16 w-16 rounded-full border-4 hover:border-zinc-900"
+            alt={member.name}
+            width={100}
+            height={100}
+          />
+        </div>
+      ))
+    }
+  </div>
+  <div class="flex gap-4 animate-marquee whitespace-nowrap ml-4">
+    <!--og -->
+    {
+      team.map((member) => (
+        <div class="tooltip tooltip-top h-16 w-16" data-tip={member.name}>
+          <Image
+            src={member.image}
+            class="h-16 w-16 rounded-full border-4 hover:border-zinc-900"
+            alt={member.name}
+            width={100}
+            height={100}
+          />
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  /* Hide the verticle scroll bar */
+  /* Chrome */
+  *::-webkit-scrollbar {
+    width: 10px;
+  }
+  /*Firefox and Edge*/
+  * {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .tooltip:before {
+    --tooltip-color: white;
+    --tooltip-text-color: black;
+    @apply border-2 border-zinc-900 font-semibold;
+  }
+</style>

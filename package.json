@@ -13,12 +13,25 @@
     "format:check": "prettier --check \"**/*.{ts,tsx,md,mdx,json,js,mjs,cjs}\""
   },
   "dependencies": {
-    "@astrojs/tailwind": "^3.0.1",
-    "astro": "^2.0.6",
-    "tailwindcss": "^3.2.4"
+    "@astrojs/react": "^2.3.2",
+    "@astrojs/tailwind": "^4.0.0",
+    "@types/react": "^18.2.21",
+    "@types/react-dom": "^18.2.7",
+    "astro": "^2.10.12",
+    "astro-icon": "^0.8.1",
+    "daisyui": "^3.6.1",
+    "payload": "^1.14.0",
+    "qs": "^6.11.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "slate": "^0.94.1",
+    "styled-components": "^6.0.7",
+    "tailwindcss": "^3.3.3"
   },
   "devDependencies": {
-    "prettier": "^2.8.2",
-    "prettier-plugin-tailwindcss": "^0.1.13"
+    "@types/qs": "^6.9.7",
+    "prettier": "^3.0.2",
+    "prettier-plugin-tailwindcss": "^0.5.3",
+    "tailwind-scrollbar": "^3.0.5"
   }
 }
